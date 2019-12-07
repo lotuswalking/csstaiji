@@ -6,34 +6,53 @@ body,
     box-sizing: border-box;
     margin: 0;
 }
+
 #taiji {
     position: absolute;
-    left:40%;
-    top:30%;
+    left: 40%;
+    top: 30%;
     width: 200px;
     height: 200px;
     /* 背景为黑白各一半的图形 */
-    background-image: linear-gradient(0deg, black 50%, white 50%); 
-/* 将边框配置为原型 */
+    background-image: linear-gradient(0deg, green 50%, yellow 50%);
+    /* background-image:radial-gradient(black 50%,white 50%); */
+    /* background-image: cubic-bezier(.17,0.86,0.73,0.14); */
+    /* 将边框配置为原型 */
     border-radius: 50%;
     /* 为原型配置阴影,没有这个将看不到白色的部分的边框 */
-    box-shadow:5px 5px 40px #666666;
+    box-shadow: 5px 5px 40px #666666;
     /* 旋转180度 */
-    transform:rotate(180deg);
-    /* animation:mymove 1s linear infinite; */
+    transform: rotate(180deg);
+    animation: mymove 5s linear infinite;
+    /* animation: move  all 2s cubic-bezier(.17, .86, .73, .14) infinite; */
 }
-@-webkit-keyframes mymove /*Safari and Chrome*/
-{
-    0% {transform:rotate(180deg)}
-    /* 50% {transform:rotate(360deg);} */
-    50% {transform:rotate(-180deg)}
-    100% {transform:rotate(180deg)}
+
+@-webkit-keyframes mymove
+
+/*Safari and Chrome*/
+    {
+    0% {
+        transform: rotate(0deg) scale(1, 1);
+    }
+
+
+    50% {
+        transform: rotate(180deg) scale(2, 2);
+
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1, 1);
+
+    }
 }
+
 #taiji:hover {
     /* transform: rotate(3600deg); */
     /* 鼠标移上去开始动画 */
-    animation:mymove 1s linear infinite;
+    animation: mymove 1s linear infinite;
 }
+
 #taiji:before,
 #taiji:after {
     /* 在开始可结束后使用边框画小圆 */
@@ -51,13 +70,13 @@ body,
 #taiji:before {
     /* 配置开始部分的圆形的左边距和颜色 */
     left: 0;
-    border-color: black;
-    background-color: white;
+    border-color: green;
+    background-color: yellow;
 }
 
 #taiji:after {
     /* 配置结束部分的圆形的右边距和颜色 */
     right: 0;
-    border-color: white;
-    background-color: black;
+    border-color: yellow;
+    background-color: green;
 }
